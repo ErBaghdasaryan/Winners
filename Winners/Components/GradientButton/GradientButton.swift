@@ -48,6 +48,6 @@ class GradientButton: UIButton {
         let padding: CGFloat = 8
         iconImageView.frame = CGRect(x: bounds.midX - 50, y: bounds.midY - iconSize / 2, width: iconSize, height: iconSize)
 
-        titleLabel?.frame = CGRect(x: bounds.midX - 20, y: 0, width: bounds.width / 2, height: bounds.height)
+        titleLabel?.frame = CGRect(x: bounds.midX - 25, y: 0, width: bounds.width / 2, height: bounds.height)
     }
 }

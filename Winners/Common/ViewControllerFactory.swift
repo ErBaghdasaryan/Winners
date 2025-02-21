@@ -43,11 +43,31 @@ final class ViewControllerFactory {
         return viewController
     }
 
+    //MARK: PrivacyPolicy
+    static func makePrivacyViewController() -> PrivacyViewController {
+        let viewController = PrivacyViewController()
+        return viewController
+    }
+
+    //MARK: Terms
+    static func makeTermsViewController() -> TermsViewController {
+        let viewController = TermsViewController()
+        return viewController
+    }
+
     //MARK: Profile
     static func makeProfileViewController() -> ProfileViewController {
         let assembler = Assembler(commonAssemblies + [ProfileAssembly()])
         let viewController = ProfileViewController()
         viewController.viewModel = assembler.resolver.resolve(IProfileViewModel.self)
+        return viewController
+    }
+
+    //MARK: Download
+    static func makeDownloadViewController(navigationModel: DownloadNavigationModel) -> DownloadViewController {
+        let assembler = Assembler(commonAssemblies + [DownloadAssembly()])
+        let viewController = DownloadViewController()
+        viewController.viewModel = assembler.resolver.resolve(IDownloadViewModel.self, argument: navigationModel)
         return viewController
     }
 }

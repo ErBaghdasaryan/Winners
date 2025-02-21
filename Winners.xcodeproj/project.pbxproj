@@ -13,6 +13,7 @@
 		CC8061A42D65E69B003C962D /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = CC8061A32D65E69B003C962D /* SwinjectAutoregistration */; };
 		CC8061AB2D65E7BE003C962D /* WinnersModel in Frameworks */ = {isa = PBXBuildFile; productRef = CC8061AA2D65E7BE003C962D /* WinnersModel */; };
 		CC8061AD2D65E7BE003C962D /* WinnersViewModel in Frameworks */ = {isa = PBXBuildFile; productRef = CC8061AC2D65E7BE003C962D /* WinnersViewModel */; };
+		CC80620C2D674BFC003C962D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CC80620B2D674BFC003C962D /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 				CC8061AD2D65E7BE003C962D /* WinnersViewModel in Frameworks */,
 				CC8061972D65E671003C962D /* SnapKit in Frameworks */,
 				CC80619F2D65E68F003C962D /* Swinject in Frameworks */,
+				CC80620C2D674BFC003C962D /* Toast in Frameworks */,
 				CC8061A42D65E69B003C962D /* SwinjectAutoregistration in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +160,7 @@
 				CC8061A32D65E69B003C962D /* SwinjectAutoregistration */,
 				CC8061AA2D65E7BE003C962D /* WinnersModel */,
 				CC8061AC2D65E7BE003C962D /* WinnersViewModel */,
+				CC80620B2D674BFC003C962D /* Toast */,
 			);
 			productName = Winners;
 			productReference = CC8061612D65E62B003C962D /* Winners.app */;
@@ -246,6 +249,7 @@
 				CC80619A2D65E681003C962D /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 				CC80619D2D65E68F003C962D /* XCRemoteSwiftPackageReference "Swinject" */,
 				CC8061A22D65E69B003C962D /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */,
+				CC80620A2D674BFC003C962D /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CC8061622D65E62B003C962D /* Products */;
@@ -650,6 +654,14 @@
 				minimumVersion = 2.9.1;
 			};
 		};
+		CC80620A2D674BFC003C962D /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -680,6 +692,11 @@
 		CC8061AC2D65E7BE003C962D /* WinnersViewModel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WinnersViewModel;
+		};
+		CC80620B2D674BFC003C962D /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC80620A2D674BFC003C962D /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

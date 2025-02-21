@@ -7,22 +7,32 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 final class NonPopularCell: UICollectionViewCell, IReusableView {
 
     private var image = UIImageView()
     private var button = GradientButton()
+    public var downloadSubject = PassthroughSubject<Bool, Never>()
+    var cancellables = Set<AnyCancellable>()
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancellables.removeAll()
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
         setupConstraints()
+        makeButtonActions()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
         setupConstraints()
+        makeButtonActions()
     }
 
     private func setupUI() {
@@ -52,5 +62,15 @@ final class NonPopularCell: UICollectionViewCell, IReusableView {
 
     public func setup(image: String) {
         self.image.image = UIImage(named: image)
+    }
+}
+
+extension NonPopularCell {
+    private func makeButtonActions() {
+        self.button.addTarget(self, action: #selector(downloadButtonTapped), for: .touchUpInside)
+    }
+
+    @objc func downloadButtonTapped() {
+        self.downloadSubject.send(true)
     }
 }

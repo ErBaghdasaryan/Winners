@@ -44,7 +44,6 @@ class TabBarViewController: UITabBarController {
         self.tabBar.barTintColor = UIColor.black
         self.tabBar.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
         self.tabBar.layer.borderWidth = 1
-        self.tabBar.isTranslucent = false
 
         let nonselectedTitleColor: UIColor = UIColor(hex: "#B3B3B3")!
         let selectedTitleColor: UIColor = UIColor(hex: "#876AF5")!

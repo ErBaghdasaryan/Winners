@@ -30,6 +30,16 @@ class HomeViewController: BaseViewController {
         startAutoScroll()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
     deinit {
         timer?.invalidate()
     }
@@ -40,7 +50,6 @@ class HomeViewController: BaseViewController {
         self.view.backgroundColor = UIColor(hex: "#151515")
 
         scrollView.contentInsetAdjustmentBehavior = .never
-        self.navigationController?.hidesBarsOnSwipe = true
 
         //MARK: Popular
         let mylayout = UICollectionViewFlowLayout()
@@ -184,6 +193,13 @@ extension HomeViewController {
         popularCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
 
+    private func downloadImage(imageName: String) {
+        guard let navigationController = self.navigationController else { return }
+
+        HomeRouter.showDownloadViewController(in: navigationController,
+                                              navigationModel: .init(imageName: imageName))
+    }
+
 }
 
 extension HomeViewController: IViewModelableController {
@@ -210,10 +226,24 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         } else if collectionView == firstHorizontal {
             let cell: NonPopularCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.setup(image: viewModel?.firstHorizontalItems[indexPath.row].image ?? "")
+
+            cell.downloadSubject.sink { [weak self] _ in
+                if let imageName = self?.viewModel?.firstHorizontalItems[indexPath.row].image {
+                    self?.downloadImage(imageName: imageName)
+                }
+            }.store(in: &cell.cancellables)
+
             return cell
         } else {
             let cell: NonPopularCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.setup(image: viewModel?.secondHorizontalItems[indexPath.row].image ?? "")
+
+            cell.downloadSubject.sink { [weak self] _ in
+                if let imageName = self?.viewModel?.secondHorizontalItems[indexPath.row].image {
+                    self?.downloadImage(imageName: imageName)
+                }
+            }.store(in: &cell.cancellables)
+
             return cell
         }
     }

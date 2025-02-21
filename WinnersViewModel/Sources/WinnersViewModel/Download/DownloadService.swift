@@ -1,20 +1,19 @@
 //
-//  ProfileService.swift
+//  DownloadService.swift
 //  WinnersViewModel
 //
-//  Created by Er Baghdasaryan on 19.02.25.
+//  Created by Er Baghdasaryan on 20.02.25.
 //
 
-import UIKit
+import Foundation
 import WinnersModel
 import SQLite
 
-public protocol IProfileService {
+public protocol IDownloadService {
     func addImage(_ model: RecentModel) throws -> RecentModel
-    func getImages() throws -> [RecentModel]
 }
 
-public class ProfileService: IProfileService {
+public class DownloadService: IDownloadService {
 
     public init() { }
 
@@ -40,23 +39,4 @@ public class ProfileService: IProfileService {
         return RecentModel(id: Int(rowId),
                            name: model.name)
     }
-
-    public func getImages() throws -> [RecentModel] {
-        let db = try Connection("\(path)/db.sqlite3")
-        let images = Table("Images")
-        let idColumn = Expression<Int>("id")
-        let nameColumn = Expression<String>("name")
-
-        var result: [RecentModel] = []
-
-        for image in try db.prepare(images) {
-            let fetchedImage = RecentModel(id: image[idColumn],
-                                           name: image[nameColumn])
-
-            result.append(fetchedImage)
-        }
-
-        return result
-    }
-
 }
