@@ -125,14 +125,14 @@ extension DownloadViewController {
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         let leftBarButton = UIBarButtonItem(customView: backButton)
         navigationItem.leftBarButtonItem = leftBarButton
-//        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.tintColor = .white
 
         let shareButton = UIButton(type: .system)
         shareButton.setImage(UIImage(named: "share"), for: .normal)
         shareButton.addTarget(self, action: #selector(shareTapped), for: .touchUpInside)
         let rightBarButton = UIBarButtonItem(customView: shareButton)
         navigationItem.rightBarButtonItem = rightBarButton
-//        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.tintColor = .white
     }
 
     @objc func backButtonTapped() {

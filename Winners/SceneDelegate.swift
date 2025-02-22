@@ -23,13 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController: UIViewController?
         if appStorageService.hasData(for: .skipOnboarding) {
             viewController = ViewControllerFactory.makeTabBarViewController()
+            self.window?.rootViewController = viewController
+            self.window?.makeKeyAndVisible()
         } else {
             appStorageService.saveData(key: .skipOnboarding, value: true)
             viewController = ViewControllerFactory.makeOnboardingViewController()
+            let navigationController = UINavigationController(rootViewController: viewController!)
+            self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
         }
-        let navigationController = UINavigationController(rootViewController: viewController!)
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -14,6 +14,7 @@ class SettingsViewController: BaseViewController, UICollectionViewDelegate {
 
     var viewModel: ViewModel?
 
+    private let background = UIImageView(image: UIImage(named: "settingsBG"))
     private let header =  UILabel(text: "Project Description",
                                   textColor: UIColor(hex: "#999999")!,
                                   font: UIFont(name: "SFProText-Regular", size: 16))
@@ -50,6 +51,9 @@ class SettingsViewController: BaseViewController, UICollectionViewDelegate {
         self.terms.setTitle("Terms & Conditions", for: .normal)
         self.privacy.setTitle("Privacy Policy", for: .normal)
 
+        self.background.frame = self.view.bounds
+
+        self.view.addSubview(background)
         self.view.addSubview(header)
         self.view.addSubview(text)
         self.view.addSubview(terms)

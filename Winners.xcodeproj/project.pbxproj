@@ -335,6 +335,7 @@
 				DEVELOPMENT_TEAM = 5PTH9U4CB9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Winners/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Winners;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -367,6 +368,7 @@
 				DEVELOPMENT_TEAM = 5PTH9U4CB9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Winners/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Winners;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

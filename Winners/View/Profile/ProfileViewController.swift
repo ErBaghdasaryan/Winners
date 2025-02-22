@@ -12,6 +12,7 @@ import StoreKit
 
 class ProfileViewController: BaseViewController, UICollectionViewDelegate {
 
+    private let background = UIImageView(image: UIImage(named: "profileBG"))
     var viewModel: ViewModel?
     var collectionView: UICollectionView!
 
@@ -61,6 +62,9 @@ class ProfileViewController: BaseViewController, UICollectionViewDelegate {
 
         self.view.backgroundColor = UIColor(hex: "#151515")
 
+        self.background.frame = self.view.bounds
+
+        self.view.addSubview(background)
         self.view.addSubview(collectionView)
         setupConstraints()
     }
